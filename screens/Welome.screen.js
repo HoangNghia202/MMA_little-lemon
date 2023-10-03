@@ -1,6 +1,41 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView, Image } from "react-native-web";
+import { useColorScheme } from "react-native";
 const WelcomeScreen = () => {
+    const colorScheme = useColorScheme();
+    console.log("colorScheme: ", colorScheme);
+
+    const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: colorScheme === "dark" ? "#333333" : "#EDEFEE",
+        },
+        headerText: {
+            fontSize: 30,
+            color: colorScheme === "dark" ? "#EDEFEE" : "#333333",
+            textAlign: "center",
+        },
+        regularText: {
+            fontSize: 24,
+            padding: 20,
+            marginVertical: 8,
+            color: colorScheme === "dark" ? "#EDEFEE" : "#333333",
+            textAlign: "center",
+        },
+
+        headerContainer: {
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+        },
+
+        image: {
+            width: 100,
+            height: 100,
+        },
+    });
+
     return (
         <ScrollView indicatorStyle="white" style={styles.container}>
             <View style={styles.headerContainer}>
@@ -8,7 +43,10 @@ const WelcomeScreen = () => {
                     source={require("../assets/logo-lemon.png")}
                     style={styles.image}
                 />
-                <Text style={styles.headerText}> Little Lemon</Text>
+                <Text style={styles.headerText}>
+                    {" "}
+                    Little Lemon {colorScheme}
+                </Text>
             </View>
 
             <Text style={styles.regularText}>
@@ -20,36 +58,5 @@ const WelcomeScreen = () => {
         </ScrollView>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#333333",
-    },
-    headerText: {
-        fontSize: 30,
-        color: "#EDEFEE",
-        textAlign: "center",
-    },
-    regularText: {
-        fontSize: 24,
-        padding: 20,
-        marginVertical: 8,
-        color: "#EDEFEE",
-        textAlign: "center",
-    },
-
-    headerContainer: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-
-    image: {
-        width: 100,
-        height: 100,
-    },
-});
 
 export default WelcomeScreen;
