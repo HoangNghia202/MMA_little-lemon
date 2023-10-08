@@ -30,9 +30,9 @@ export default function App() {
                         />
                     </Stack.Navigator>
                 </NavigationContainer>
-            </View>
-            <View style={styles.footerContainer}>
-                <LittleLemonFooter />
+                <View style={styles.footerContainer}>
+                    <LittleLemonFooter />
+                </View>
             </View>
         </>
     );

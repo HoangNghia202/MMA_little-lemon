@@ -9,48 +9,30 @@ export default function LoginScreen({ navigation }) {
             {!isLogin && (
                 <Text style={styles.regularText}>Login to continue </Text>
             )}
-            {!isLogin ? (
-                <View>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Enter email"
-                    ></TextInput>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Enter password"
-                        textContentType="password"
-                        secureTextEntry={true}
-                    ></TextInput>
-                    <View style={styles.center}>
-                        <Pressable
-                            style={styles.pressable}
-                            textContentType="password"
-                            onPress={() => {
-                                setIsLogin(true);
-                            }}
-                        >
-                            <Text> Login </Text>
-                        </Pressable>
-                    </View>
-                </View>
-            ) : (
+
+            <View>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Enter email"
+                ></TextInput>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Enter password"
+                    textContentType="password"
+                    secureTextEntry={true}
+                ></TextInput>
                 <View style={styles.center}>
-                    <Text style={styles.regularText}>Logged in</Text>
                     <Pressable
                         style={styles.pressable}
+                        textContentType="password"
                         onPress={() => {
-                            setIsLogin(false);
+                            navigation.navigate("Welcome");
                         }}
                     >
-                        <Text> Log out </Text>
+                        <Text> Login </Text>
                     </Pressable>
-                    <Button
-                        onPress={() => navigation.push("Welcome")}
-                        title="To Welcome"
-                        color="#841584"
-                    ></Button>
                 </View>
-            )}
+            </View>
         </ScrollView>
     );
 }
